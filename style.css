@@ -1,0 +1,103 @@
+*{
+  box-sizing: border-box;
+}
+
+body { 
+    padding: 30px; 
+    margin: 0 auto; 
+    display: flex;
+    background: grey;
+    font-family: Helvetica, sans-serif;
+} 
+
+button{
+  outline: none;
+  margin-right: 10px;
+}
+
+#canvas{
+}
+
+#wrapper{
+  margin-left: 15px;
+  padding:  0 15px;
+}
+
+#addElement{
+  margin-bottom: 1em;
+  float: right;
+}
+#addElement button{
+  background: black;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+  padding: 5px 10px;
+  border-radius: 30px;
+}
+
+/*1. Element*/
+.el_container{
+  background: #eee;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: block;
+  overflow: hidden;
+}
+
+
+/*1.1 Input*/
+textarea{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2px;
+  width: 350px;
+  height: 100px;
+  resize: vertical;
+  border: none;
+  padding: 5px;
+  outline: none;
+  font-size: .85em;
+}
+
+input[type="file"]{
+  margin-bottom: 15px;
+}
+
+/*1.2 Settings*/
+.settings{
+  margin-bottom: 1em;
+}
+
+.remove{
+  float:right;
+  background: none;
+  border: none;
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.size{
+  float: left;
+  overflow: hidden;
+  display: block;
+  background: #eee;
+  border: solid 1px #999;
+}
+.size button{
+  float: left;
+  border: none;
+  background:#eee;
+  width: 20px;
+}
+
+.size span{
+  width: 30px;
+  float: left;
+  text-align: center;
+  background: #fff;
+  border-left: solid 1px #999;
+  border-right: solid 1px #999;
+}
