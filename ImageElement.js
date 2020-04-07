@@ -76,10 +76,10 @@ class ImageElement {
   }
 
   show() {
-    if(img){
-      let prop = img.width/this.w;
-      let propH = img.height/this.h;
-      image(img, this.x, this.y, this.w, this.h, 0, 0, propH*this.w, prop*this.h);
+    if(this.img){
+      let prop = this.img.width/this.w;
+      let propH = this.img.height/this.h;
+      image(this.img, this.x, this.y, this.w, this.h, 0, 0, propH*this.w, prop*this.h);
     }else{
        fill('rgba(200, 200, 200, 0.25)');
        noStroke();
@@ -107,10 +107,10 @@ class ImageElement {
     this.dragging = false;
   }
   /*-----HANDLE FILE------*/
-   handelFile(file) {
+  handelFile = (file) => {
     if (file.type === 'image') {
       let i = createImg(file.data, '');
-      img = i;
+      this.img = i;
       i.hide();
     }
   }
