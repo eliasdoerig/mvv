@@ -80,8 +80,8 @@ class ImageElement {
     if (this.dragging) {
       this.x = round((mouseX + this.offsetX)/w) * w + padding + gap/2;
       this.y = round((mouseY + this.offsetY)/h) * h + padding*2;
-      this.colX = (this.x - (padding + gap/2)) / w;
-      this.colY = (this.y - (padding + padding)) / h;
+      this.colX = round((this.x - (padding + gap/2)) / w);
+      this.colY = round((this.y - (padding + padding)) / h);
     }
     
     this.h = document.getElementById(this.name + '-height').value * h;

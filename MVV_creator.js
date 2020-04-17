@@ -13,6 +13,7 @@ const draggerSize = 15;
 //ELEMENTS
 let elementsKey = 0;
 let elements = [];
+let draggingElement = false;
 //IMGS
 let logo; 
 let cover;

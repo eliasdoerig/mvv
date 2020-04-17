@@ -90,8 +90,8 @@ class TextElement {
     if (this.dragging) {
       this.x = round((mouseX + this.offsetX)/w)*w + padding + gap/2;
       this.y = round((mouseY + this.offsetY)/h)*h + padding*2;
-      this.colX = (this.x - (padding + gap/2)) / w;
-      this.colY = (this.y - (padding + padding)) / h;
+      this.colX = round((this.x - (padding + gap/2)) / w);
+      this.colY = round((this.y - (padding + padding)) / h);
     }
   }
 
@@ -124,8 +124,9 @@ class TextElement {
   
   pressed() {
     // Did I click on the rectangle?
-    if (mouseX > this.x - draggerSize && mouseX < this.x + draggerSize*2 && mouseY > this.y - draggerSize && mouseY < this.y + draggerSize*2) {
+    if (mouseX > this.x - draggerSize && mouseX < this.x + draggerSize*2 && mouseY > this.y - draggerSize && mouseY < this.y + draggerSize*2 && !draggingElement) {
       this.dragging = true;
+      draggingElement = true;
       // If so, keep track of relative location of click to corner of rectangle
       this.offsetX = this.x - mouseX;
       this.offsetY = this.y - mouseY;
@@ -135,10 +136,7 @@ class TextElement {
   released() {
     // Quit dragging
     this.dragging = false;
-  }
-  
-  removeSelf(){
-  
+    draggingElement = false;
   }
   
   checkfontsize(fontSize){
