@@ -143,8 +143,12 @@ function createJPG(){
   redraw();
 }
 
+
 function saveLocandinaJSON(){
-  saveJSON(elements, 'locandina');
+  let data = JSON.decycle(elements);
+  let stringify = JSON.stringify(data);
+  saveStrings(stringify.split('\n'), 'locandina', 'json')
+  //saveJSON(elements, 'locandina.json', true);
 }
 
 function loadLocandinaJSON(files){
@@ -152,7 +156,8 @@ function loadLocandinaJSON(files){
   let fr = new FileReader();
 
   fr.onload = function(e) { 
-    data = JSON.parse(e.target.result);
+    retro = JSON.retrocycle(e.target.result);
+    data = JSON.parse(retro);
     for(let i = 1; i < data.length; i++){
       if(data[i].type == "image"){
         newImage(data[i].colX, data[i].colY, data[i].colW, data[i].colH); 
@@ -166,10 +171,6 @@ function loadLocandinaJSON(files){
   fr.readAsText(files.item(0));
 }
 
-function setElements(json){
-  elements = json;
-}
-
 //GRID
 function toggleGrid(){
   if(grid){
@@ -179,3 +180,6 @@ function toggleGrid(){
   }
   redraw();
 }
+
+
+
