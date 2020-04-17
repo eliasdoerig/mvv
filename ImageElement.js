@@ -4,9 +4,12 @@ let img;
 class ImageElement {
   constructor(count, x, y, bw, bh) {
     //id
+    this.type = 'image';
     this.i = count;
     this.name = 'i_' + count;
     //x, y 
+    this.colX = x;
+    this.colY = y;
     this.x = x * w + padding + gap/2;
     this.y = y * h + padding*2;
     this.offsetX = 0;
@@ -54,8 +57,16 @@ class ImageElement {
     el_settings.appendChild(removeButton);
 
    }
+
+  sameCoordiates = (other) => {
+    if(this.x == other.x && this.y == other.y){
+      return true;
+    }else{
+      return false;
+    }
+  }
   
-  over() {
+  over(){
     // Is mouse over object
     if (mouseX > this.x - draggerSize && mouseX < this.x + draggerSize*2 && mouseY > this.y - draggerSize && mouseY < this.y + draggerSize*2){
       this.hover = true;
@@ -64,7 +75,7 @@ class ImageElement {
     }
   }
 
-  update() {
+  update(){
     // Adjust location if being dragged
     if (this.dragging) {
       this.x = round((mouseX + this.offsetX)/w) * w + padding + gap/2;
@@ -75,7 +86,7 @@ class ImageElement {
     this.w = document.getElementById(this.name + '-width').value * w - gap; 
   }
 
-  show() {
+  show(){
     if(this.img){
       let prop = this.img.width/this.w;
       let propH = this.img.height/this.h;
@@ -92,7 +103,7 @@ class ImageElement {
     }
   }
   
-  pressed() {
+  pressed(){
     // Did I click on the rectangle?
     if (mouseX > this.x - draggerSize && mouseX < this.x + draggerSize*2 && mouseY > this.y - draggerSize && mouseY < this.y + draggerSize*2) {
       this.dragging = true;
@@ -102,7 +113,7 @@ class ImageElement {
     }
   }
 
-  released() {
+  released(){
     // Quit dragging
     this.dragging = false;
   }

@@ -41,10 +41,6 @@ function setup() {
   addTxt.mousePressed(newText);
   let addImg = createButton('aggiungi immagine').parent('buttons_container');
   addImg.mousePressed(newImage);
-  let grid = createButton('Griglia').parent('buttons_container');
-  grid.mousePressed(toggleGrid);
-  let save = createButton('save JPG').parent('buttons_container');
-  save.mousePressed(createJPG);
   
   let el = new TextElement(elementsKey, 0, colH - 1, 2, 1, 'tg', 'Museo di Val Verzasca');
   elementsKey++;
@@ -63,6 +59,7 @@ function draw() {
   
   //logo
   image(logo, padding + gap/2, padding + gap/2, 250, (logo.height/logo.width)*250);
+  /*BUG FIREFOX DOESN'T LOAD!*/
   
   //grid
   if(!rec){
@@ -95,7 +92,6 @@ function draw() {
   //REC
   if(rec){
     save('flyer.jpg');
-    print('PDF saved');
     pixelDensity(1.0);
     rec = false;
   }
@@ -118,14 +114,15 @@ function mouseReleased() {
 }
 
 //ADD
-function newText(){
-  let el = new TextElement(elementsKey, 0, 4, 2, 1, 't', 'Nuovo testo');
+function newText(x = 0, y = 4, w = 2, h = 1, fs = 't', t = 'Nuovo testo'){
+  let el = new TextElement(elementsKey, x, y, w, h, fs, t);
   elementsKey++;
   elements.push(el);
+  console.log(elements);
 }
 
-function newImage(){
-  let el = new ImageElement(elementsKey, 0, 12, 5, 20);
+function newImage(x = 0, y = 12, w = 5, h = 20){
+  let el = new ImageElement(elementsKey, x, y, w, h);
   elementsKey++;
   elements.push(el);
 }
@@ -144,6 +141,33 @@ function removeElement(el){
 function createJPG(){
   rec = true;
   redraw();
+}
+
+function saveLocandinaJSON(){
+  saveJSON(elements, 'locandina');
+}
+
+function loadLocandinaJSON(files){
+  let data;
+  let fr = new FileReader();
+
+  fr.onload = function(e) { 
+    data = JSON.parse(e.target.result);
+    for(let i = 1; i < data.length; i++){
+      if(data[i].type == "image"){
+        newImage(data[i].colX, data[i].colY, data[i].colW, data[i].colH); 
+      }else if(data[i].type == "text"){
+        newText(data[i].colX, data[i].colY, data[i].colW, data[i].colH, data[i].fs, data[i].txt);
+      }
+    }
+    redraw();
+  }
+
+  fr.readAsText(files.item(0));
+}
+
+function setElements(json){
+  elements = json;
 }
 
 //GRID

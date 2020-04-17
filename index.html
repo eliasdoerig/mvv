@@ -21,15 +21,25 @@
 </head>
 
 <body>
-  <div id="canvas"></div>
-  <div id="wrapper">
-  <!--Element-->
-    <div id="elements_container"></div>  
-  <!--end Element-->
-  <!--Buttons-->
-    <div id="buttons_container"></div>
-  <!--end Buttons-->
-  </div>
-  
+    <main>
+        <div id="menu">
+            <label>
+                Carica locandina
+                <input type="file" id="loadLocandinaJSON" onchange="loadLocandinaJSON(this.files)">
+            </label>
+            <button id="saveLocandinaJSON" onclick="saveLocandinaJSON()">Salva locandina</button>
+            <button id="createJPG" onclick="createJPG()">Esporta JPG</button>
+            <button id="toggleGrid" onclick="toggleGrid()">Griglia</button>
+        </div>
+        <div id="canvas"></div>
+    </main>
+    <div id="wrapper">
+    <!--Element-->
+        <div id="elements_container"></div>  
+    <!--end Element-->
+    <!--Buttons-->
+        <div id="buttons_container"></div>
+    <!--end Buttons-->
+    </div>
 </body>
 </html>

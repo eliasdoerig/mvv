@@ -6,13 +6,24 @@ body {
     padding: 30px; 
     margin: 0 auto; 
     display: flex;
-    background: grey;
+    background: #777;
     font-family: Helvetica, sans-serif;
+    font-size: 16px;
 } 
 
-button{
-  outline: none;
-  margin-right: 10px;
+#menu{
+  background-color: #eee;
+  padding: 10px;
+}
+
+#menu > *{
+  display: inline-block;
+  font-size: 1em;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
 }
 
 #canvas{
@@ -21,6 +32,15 @@ button{
 #wrapper{
   margin-left: 15px;
   padding:  0 15px;
+}
+
+#buttons_container{
+  margin-top: 10px;
+}
+#buttons_container > button{
+  outline: none;
+  font-size: 1em;
+  margin-right: 10px;
 }
 
 #addElement{
@@ -40,10 +60,9 @@ button{
 .el_container{
   background: #eee;
   padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 4px;
   display: block;
   overflow: hidden;
+  border-bottom: solid 1px #999;
 }
 
 

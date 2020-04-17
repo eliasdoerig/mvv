@@ -1,9 +1,12 @@
 class TextElement {
   constructor(count, x, y, bw, bh, fontSize, content) {
     //id
+    this.type = "text";
     this.i = count;
     this.name = 't_' + count;
     // x, y
+    this.colX = x;
+    this.colY = y;
     this.x = x * w + padding + gap/2;
     this.y = y * h + padding*2;
     this.offsetX = 0;
@@ -15,6 +18,7 @@ class TextElement {
     this.w = bw * w - gap;
     //content
     this.txt = content;
+    this.fs = fontSize;
     this.fontSize = this.checkfontsize(fontSize);
     //check
     this.hover = false;
