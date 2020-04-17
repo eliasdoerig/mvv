@@ -148,7 +148,6 @@ function saveLocandinaJSON(){
   let data = JSON.decycle(elements);
   let stringify = JSON.stringify(data);
   saveStrings(stringify.split('\n'), 'locandina', 'json')
-  //saveJSON(elements, 'locandina.json', true);
 }
 
 function loadLocandinaJSON(files){
@@ -162,6 +161,7 @@ function loadLocandinaJSON(files){
       if(data[i].type == "image"){
         newImage(data[i].colX, data[i].colY, data[i].colW, data[i].colH); 
       }else if(data[i].type == "text"){
+        print("colX: " + data[i].colX +"\n colY: " + data[i].colY);
         newText(data[i].colX, data[i].colY, data[i].colW, data[i].colH, data[i].fs, data[i].txt);
       }
     }
