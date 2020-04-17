@@ -59,10 +59,21 @@ main{
 /*1. Element*/
 .el_container{
   background: #eee;
-  padding: 8px;
+  padding: 8px 8px 8px 24px;
   display: block;
   overflow: hidden;
   border-bottom: solid 1px #999;
+  position: relative;
+}
+
+.el_container::before{
+  content: '=';
+  position: absolute;
+  top: 0px;
+  left: 6px;
+  color: grey;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 
@@ -70,7 +81,7 @@ main{
 textarea{
   display: flex;
   flex-direction: column;
-  margin-bottom: 2px;
+  margin: 0 0 2px;
   width: 350px;
   height: 100px;
   resize: vertical;

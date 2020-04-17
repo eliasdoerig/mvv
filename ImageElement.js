@@ -29,7 +29,7 @@ class ImageElement {
     */
     //Element
     let el_container = document.createElement('div');
-    el_container.classList = 'el_container';
+    el_container.classList = 'el_container isDraggable';
     el_container.id = 'el_container' + this.name;    
     //Elements
     let elements_container = document.querySelector("#elements_container");
