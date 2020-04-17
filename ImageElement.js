@@ -107,8 +107,9 @@ class ImageElement {
   
   pressed(){
     // Did I click on the rectangle?
-    if (mouseX > this.x - draggerSize && mouseX < this.x + draggerSize*2 && mouseY > this.y - draggerSize && mouseY < this.y + draggerSize*2) {
+    if (mouseX > this.x - draggerSize && mouseX < this.x + draggerSize*2 && mouseY > this.y - draggerSize && mouseY < this.y + draggerSize*2 && !draggingElement) {
       this.dragging = true;
+      draggingElement = true;
       // If so, keep track of relative location of click to corner of rectangle
       this.offsetX = this.x - mouseX;
       this.offsetY = this.y - mouseY;
@@ -118,6 +119,7 @@ class ImageElement {
   released(){
     // Quit dragging
     this.dragging = false;
+    draggingElement = false;
   }
   /*-----HANDLE FILE------*/
   handelFile = (file) => {
