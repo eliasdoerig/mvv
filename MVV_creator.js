@@ -102,14 +102,14 @@ function draw() {
 //MOUSE EVENTS
 function mousePressed() {
   loop();
-  for(let element of elements){
-    element.pressed();
+  for(let i = elements.length - 1; i >= 0; i--){
+    elements[i].pressed();
   }
 }
 
 function mouseReleased() {
-  for(let element of elements){
-    element.released();
+  for(let i = elements.length - 1; i >= 0; i--){
+    elements[i].released();
   }
   noLoop();
 }
