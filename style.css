@@ -66,8 +66,7 @@ main{
   position: relative;
 }
 
-.el_container::before{
-  content: '=';
+.el_container > .handle{
   position: absolute;
   top: 0px;
   left: 6px;

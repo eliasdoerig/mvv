@@ -35,6 +35,14 @@ class ImageElement {
     let elements_container = document.querySelector("#elements_container");
     elements_container.appendChild(el_container);
     
+     /*
+      Dragging handle
+    */
+    let el_handle = document.createElement('div');
+    el_handle.classList = 'handle';
+    el_handle.innerHTML = "=";
+    el_container.appendChild(el_handle);
+
     /*
      Settings
     */
