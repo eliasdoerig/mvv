@@ -107,6 +107,11 @@ class TextElement {
       fill(0);
       noStroke();
       textSize(this.fontSize);
+      if(this.fontSize == 15){
+        textStyle(ITALIC);
+      }else{
+        textStyle(NORMAL);
+      }
       text(this.txt, this.x, this.y + this.fontSize/1.5, this.w);    
       if(!rec && grid){
         fill('rgba(200, 0, 140, 0.25)');
